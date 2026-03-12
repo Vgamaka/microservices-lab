@@ -1,0 +1,5 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.import.maven.userSettings": "/Users/ira/Documents/Playground/microservices-lab/.mvn/settings.xml",
+    "maven.executable.options": "-Dmaven.repo.local=/Users/ira/Documents/Playground/microservices-lab/.m2"
+}

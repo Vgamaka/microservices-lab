@@ -1,6 +1,7 @@
 .m2/
 .idea/
-.vscode/
+.vscode/*
+!.vscode/settings.json
 target/
 */target/
 .DS_Store
