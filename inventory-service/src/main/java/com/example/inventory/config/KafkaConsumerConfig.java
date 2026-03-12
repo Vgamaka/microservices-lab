@@ -13,6 +13,7 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Configuration
 public class KafkaConsumerConfig {
@@ -40,7 +41,7 @@ public class KafkaConsumerConfig {
     ) {
         ConcurrentKafkaListenerContainerFactory<String, OrderCreatedEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory);
+        factory.setConsumerFactory(Objects.requireNonNull(consumerFactory, "consumerFactory must not be null"));
         return factory;
     }
 }

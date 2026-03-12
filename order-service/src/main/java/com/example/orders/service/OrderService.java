@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
@@ -28,7 +29,11 @@ public class OrderService {
     public OrderCreatedEvent createOrder(OrderRequest request) {
         OrderCreatedEvent event = new OrderCreatedEvent(request.orderId(), request.item(), request.quantity());
         orders.put(event.orderId(), event);
-        kafkaTemplate.send(topicName, event.orderId(), event);
+        kafkaTemplate.send(
+                Objects.requireNonNull(topicName, "topicName must not be null"),
+                Objects.requireNonNull(event.orderId(), "orderId must not be null"),
+                event
+        );
         return event;
     }
 

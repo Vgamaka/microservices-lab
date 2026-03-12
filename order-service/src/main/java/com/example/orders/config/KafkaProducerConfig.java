@@ -13,6 +13,7 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Configuration
 public class KafkaProducerConfig {
@@ -32,6 +33,6 @@ public class KafkaProducerConfig {
     public KafkaTemplate<String, OrderCreatedEvent> kafkaTemplate(
             ProducerFactory<String, OrderCreatedEvent> producerFactory
     ) {
-        return new KafkaTemplate<>(producerFactory);
+        return new KafkaTemplate<>(Objects.requireNonNull(producerFactory, "producerFactory must not be null"));
     }
 }
